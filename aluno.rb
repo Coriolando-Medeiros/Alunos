@@ -30,9 +30,25 @@ class Aluno
 
     def listar_aluno
         puts "Lista de aluno"
-        @alunos.each do |aluno|
-            cursos = aluno[:cursos_aluno].join(", ") if aluno[:cursos_aluno].is_a?(Array)
-            puts "Aluno: #{aluno[:nome]} - Cursos: #{cursos}"
+        if @alunos.empty?
+            puts "Sem alunos cadastrados"
+            puts "Cadastar novo aluno?"
+            puts "1 - Sim | 0 - Sair"
+            opcao = gets.chomp
+
+            if opcao == 1
+                cadastrar_aluno
+            elsif opcao == 0
+                puts "Saindo..."
+                return
+            else
+                puts "Opção inválida!"
+            end
+        else
+            @alunos.each do |aluno|
+                cursos = aluno[:cursos_aluno].join(", ") if aluno[:cursos_aluno].is_a?(Array)
+                puts "Aluno: #{aluno[:nome]} - Cursos: #{cursos}"
+            end
         end
     end
 end
