@@ -22,4 +22,16 @@ class Curso
         end
     end
 
+    def remover_curso
+        puts "Remover Curso"
+        @cursos.each_with_index do |curso, indice|
+            puts "#{indice + 1}º - Curso: #{curso[:curso]} - Professor: #{curso[:professor]} - Carga horária: #{curso[:carga_horaria]}"
+        end
+        puts "Escolha o curso a ser removido"
+        puts "Digite o número do índice"
+        print "Indice: "
+        indice = gets.chomp.to_i - 1
+        @cursos.delete_at(indice)
+        puts "Curso Removido!"
+    end
 end
